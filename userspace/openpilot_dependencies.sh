@@ -2,68 +2,64 @@
 
 echo "Installing openpilot dependencies"
 
-# Install neccesary libs
-apt-get update
-apt-get install --no-install-recommends -yq \
+# Add edge/testing repository
+# TODO: remove once all packages are in main/community repositories
+echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+
+apk update
+apk add \
+    alpine-sdk \
     autoconf \
     automake \
-    build-essential \
-    bzip2 \
-    casync \
+    bzip2-dev \
+    capnproto \
+    cargo \
     clang \
     clinfo \
     cmake \
     cppcheck \
     curl \
+    curl-dev \
+    czmq-dev \
+    dbus-dev \
+    eigen-dev \
+    ffmpeg \
+    freetype-dev \
     gcc-arm-none-eabi \
+    glfw-dev \
+    glib-dev \
+    i2c-tools-dev \
+    jpeg-dev \
     libarchive-dev \
     libass-dev \
-    libbz2-dev \
-    libcurl4-openssl-dev \
-    libczmq-dev \
-    libdbus-1-dev \
-    libeigen3-dev \
+    libbz2 \
     libffi-dev \
-    libfreetype6-dev \
-    libglfw3-dev \
-    libglib2.0-0 \
-    libi2c-dev \
-    libjpeg-dev \
-    liblzma-dev \
-    libomp-dev \
-    libsdl2-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    libsystemd-dev \
     libtool \
-    libusb-1.0-0-dev \
-    libuv1-dev \
+    libusb-dev \
+    libuv-dev \
     libva-dev \
     libvdpau-dev \
     libvorbis-dev \
-    libxcb-shm0-dev \
-    libxcb-xfixes0-dev \
-    libxcb1-dev \
-    libzmq3-dev \
-    locales \
-    ocl-icd-libopencl1 \
-    ocl-icd-opencl-dev \
+    libxcb-dev \
     opencl-headers \
-    pkg-config \
+    opencl-icd-loader-dev \
+    openmp-dev \
+    openssl-dev \
+    rust \
+    sdl2-dev \
+    sqlite-dev \
     texinfo \
     wget \
-    zlib1g-dev \
-    libqt5location5-plugin-mapboxgl \
-    libqt5opengl5-dev \
-    libqt5sql5-sqlite \
-    libqt5svg5-dev \
-    libqt5multimedia5-plugins \
-    qml-module-qtquick2 \
-    qt5-default \
-    qtbase5-private-dev \
-    qtdeclarative5-dev \
-    qtdeclarative5-private-dev \
-    qtlocation5-dev \
-    qtmultimedia5-dev \
-    qtpositioning5-dev \
-    qtwayland5
+    xz-dev \
+    zeromq-dev \
+    zlib-dev \
+    mapbox-gl-qml \
+    qt5-qtbase-dev \
+    qt5-qtbase-sqlite \
+    qt5-qtbase-x11 \
+    qt5-qtdeclarative-dev \
+    qt5-qtlocation-dev \
+    qt5-qtmultimedia-dev \
+    qt5-qtquickcontrols \
+    qt5-qtwayland \
+    qtchooser

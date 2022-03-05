@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ncdu && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
+
+WORKDIR /app
+
+CMD ["/usr/bin/ncdu", "/app", "-X", "/app/.dockerignore"]
