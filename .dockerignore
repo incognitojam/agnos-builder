@@ -3,7 +3,13 @@
 .*.swp
 .*.swo
 
-build/
-output/
-edk2_tici/
-agnos-kernel-sdm845/
+.git
+build
+output
+edk2_tici
+agnos-kernel-sdm845
+edk2-sdm845
+oneplus-kernel-sdm845
+tools
+
+*.md

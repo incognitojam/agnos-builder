@@ -7,3 +7,9 @@
 [submodule "agnos-kernel-sdm845"]
   path = agnos-kernel-sdm845
   url = ../../commaai/agnos-kernel-sdm845.git
+[submodule "edk2-sdm845"]
+	path = edk2-sdm845
+	url = https://github.com/edk2-porting/edk2-sdm845
+[submodule "oneplus-kernel-sdm845"]
+	path = oneplus-kernel-sdm845
+	url = https://github.com/LineageOS/android_kernel_oneplus_sdm845

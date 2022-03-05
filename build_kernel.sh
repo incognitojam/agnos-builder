@@ -8,13 +8,15 @@ TOOLS=$DIR/tools
 TMP_DIR=/tmp/agnos-builder-tmp
 OUTPUT_DIR=$DIR/output
 BOOT_IMG=./boot.img
+#KERNEL_DIR=$DIR/agnos-kernel-sdm845
+KERNEL_DIR=$DIR/oneplus-kernel-sdm845
 cd $DIR
 
 # Clone kernel if not done already
-if git submodule status --cached agnos-kernel-sdm845/ | grep "^-"; then
-  git submodule update --init agnos-kernel-sdm845
+if git submodule status --cached $KERNEL_DIR/ | grep "^-"; then
+  git submodule update --init $KERNEL_DIR
 fi
-cd agnos-kernel-sdm845
+cd $KERNEL_DIR
 
 $DIR/tools/extract_tools.sh
 
@@ -39,7 +41,7 @@ make -j$(nproc --all) O=out  # Image.gz-dtb
 # Copy over Image.gz-dtb
 mkdir -p $TMP_DIR
 cd $TMP_DIR
-cp $DIR/agnos-kernel-sdm845/out/arch/arm64/boot/Image.gz-dtb .
+cp $KERNEL_DIR/out/arch/arm64/boot/Image.gz-dtb .
 
 # Make boot image
 $TOOLS/mkbootimg \
@@ -63,6 +65,6 @@ cat $BOOT_IMG.nonsecure $BOOT_IMG.sig.padded > $BOOT_IMG
 # Copy to output dir
 mkdir -p $OUTPUT_DIR
 mv $BOOT_IMG $OUTPUT_DIR/
-cp $DIR/agnos-kernel-sdm845/out/techpack/audio/asoc/snd-soc-sdm845.ko $OUTPUT_DIR/
-cp $DIR/agnos-kernel-sdm845/out/techpack/audio/asoc/codecs/snd-soc-wcd9xxx.ko $OUTPUT_DIR/
-cp $DIR/agnos-kernel-sdm845/out/drivers/staging/qcacld-3.0/wlan.ko $OUTPUT_DIR/
+cp $KERNEL_DIR/out/techpack/audio/asoc/snd-soc-sdm845.ko $OUTPUT_DIR/
+cp $KERNEL_DIR/out/techpack/audio/asoc/codecs/snd-soc-wcd9xxx.ko $OUTPUT_DIR/
+cp $KERNEL_DIR/out/drivers/staging/qcacld-3.0/wlan.ko $OUTPUT_DIR/
