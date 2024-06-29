@@ -18,4 +18,4 @@ fi
 echo "Setting global python version"
 pyenv global $PYTHON_VERSION
 
-pip3 install --no-cache-dir --upgrade pip poetry setuptools wheel
+pip3 install --no-cache-dir --upgrade pip poetry
